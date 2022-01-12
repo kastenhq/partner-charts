@@ -1,0 +1,12 @@
+--- charts-original/Chart.yaml
++++ charts/Chart.yaml
+@@ -8,3 +8,8 @@
+   name: kastenIO
+ name: k10
+ version: 4.5.6
++kubeVersion: ">= 1.17"
++annotations:
++  catalog.cattle.io/certified: partner
++  catalog.cattle.io/release-name: k10
++  catalog.cattle.io/display-name: kasten/k10 
+\ No newline at end of file

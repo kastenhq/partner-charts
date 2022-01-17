@@ -2065,6 +2065,25 @@ entries:
     urls:
     - assets/k10/k10-4.5.6.tgz
     version: 4.5.6
+  - annotations:
+      catalog.cattle.io/certified: partner
+      catalog.cattle.io/display-name: K10
+      catalog.cattle.io/release-name: k10
+    apiVersion: v2
+    appVersion: 4.5.6
+    created: "2022-01-17T13:07:49.835053638Z"
+    description: Kasten’s K10 Data Management Platform
+    digest: b633629e5bdbf318344a50d947bce4c3ff51fe0591dd741a9fcea390a1772647
+    home: https://kasten.io/
+    icon: https://docs.kasten.io/_static/kasten-logo-vertical.png
+    kubeVersion: '>= 1.17'
+    maintainers:
+    - email: support@kasten.io
+      name: kastenIO
+    name: k10
+    urls:
+    - assets/k10/k10-4.5.5.tgz
+    version: 4.5.5
   kong:
   - annotations:
       catalog.cattle.io/certified: partner

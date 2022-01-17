@@ -1,0 +1,12 @@
+--- charts-original/values.schema.json
++++ charts/values.schema.json
+@@ -225,6 +225,9 @@
+                 },
+                 "reportPushPeriod": {
+                     "type": "integer"
++                },
++                "promoID": {
++                    "type": "string"
+                 }
+             }
+         },

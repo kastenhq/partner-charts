@@ -1,0 +1,12 @@
+--- charts-original/charts/prometheus/templates/alertmanager/sts.yaml
++++ charts/charts/prometheus/templates/alertmanager/sts.yaml
+@@ -144,6 +144,9 @@
+         - name: {{ .name }}
+           secret:
+             secretName: {{ .secretName }}
++            {{- with .optional }}
++            optional: {{ . }}
++            {{- end }}
+       {{- end }}
+ {{- if .Values.alertmanager.persistentVolume.enabled }}
+   volumeClaimTemplates:

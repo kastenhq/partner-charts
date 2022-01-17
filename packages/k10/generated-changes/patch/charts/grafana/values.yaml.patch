@@ -1,0 +1,182 @@
+--- charts-original/charts/grafana/values.yaml
++++ charts/charts/grafana/values.yaml
+@@ -617,7 +617,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_backup_ended_count{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
++                   "expr": "sum(round(increase(action_backup_ended_overall{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -690,7 +690,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_backup_ended_count{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
++                   "expr": "sum(round(increase(action_backup_ended_overall{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -763,7 +763,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_backup_skipped_count{cluster=\"$cluster\"}[$__range])))",
++                   "expr": "sum(round(increase(action_backup_skipped_overall{cluster=\"$cluster\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -836,7 +836,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_restore_ended_count{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
++                   "expr": "sum(round(increase(action_restore_ended_overall{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -909,7 +909,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_restore_ended_count{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
++                   "expr": "sum(round(increase(action_restore_ended_overall{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -982,7 +982,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_restore_skipped_count{cluster=\"$cluster\"}[$__range])))",
++                   "expr": "sum(round(increase(action_restore_skipped_overall{cluster=\"$cluster\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1059,7 +1059,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_backup_cluster_ended_count{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
++                   "expr": "sum(round(increase(action_backup_cluster_ended_overall{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1132,7 +1132,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_backup_cluster_ended_count{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
++                   "expr": "sum(round(increase(action_backup_cluster_ended_overall{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1205,7 +1205,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_backup_cluster_skipped_count{cluster=\"$cluster\"}[$__range])))",
++                   "expr": "sum(round(increase(action_backup_cluster_skipped_overall{cluster=\"$cluster\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1278,7 +1278,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_restore_cluster_ended_count{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
++                   "expr": "sum(round(increase(action_restore_cluster_ended_overall{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1351,7 +1351,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_restore_cluster_ended_count{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
++                   "expr": "sum(round(increase(action_restore_cluster_ended_overall{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1424,7 +1424,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_restore_cluster_skipped_count{cluster=\"$cluster\"}[$__range])))",
++                   "expr": "sum(round(increase(action_restore_cluster_skipped_overall{cluster=\"$cluster\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1501,7 +1501,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_export_ended_count{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
++                   "expr": "sum(round(increase(action_export_ended_overall{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1574,7 +1574,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_export_ended_count{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
++                   "expr": "sum(round(increase(action_export_ended_overall{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1647,7 +1647,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_export_skipped_count{cluster=\"$cluster\"}[$__range])))",
++                   "expr": "sum(round(increase(action_export_skipped_overall{cluster=\"$cluster\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1710,7 +1710,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_import_ended_count{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
++                   "expr": "sum(round(increase(action_import_ended_overall{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1783,7 +1783,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_import_ended_count{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
++                   "expr": "sum(round(increase(action_import_ended_overall{cluster=\"$cluster\", state=~\"failed|cancelled\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1856,7 +1856,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_import_skipped_count{cluster=\"$cluster\"}[$__range])))",
++                   "expr": "sum(round(increase(action_import_skipped_overall{cluster=\"$cluster\"}[$__range])))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+@@ -1944,7 +1944,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_run_ended_count{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
++                   "expr": "sum(round(increase(action_run_ended_overall{cluster=\"$cluster\", state=\"succeeded\"}[$__range])))",
+                    "format": "time_series",
+                    "interval": "",
+                    "legendFormat": "",
+@@ -2020,7 +2020,7 @@
+                "targets": [
+                  {
+                    "exemplar": false,
+-                   "expr": "sum(round(increase(action_run_skipped_count{cluster=\"$cluster\"}[$__range])))",
++                   "expr": "sum(round(increase(action_run_skipped_overall{cluster=\"$cluster\"}[$__range])))",
+                    "format": "time_series",
+                    "interval": "",
+                    "legendFormat": "",

@@ -1,0 +1,25 @@
+--- charts-original/templates/_k10_metering.tpl
++++ charts/templates/_k10_metering.tpl
+@@ -100,10 +100,7 @@
+       securityContext:
+ {{ toYaml .Values.services.securityContext | indent 8 }}
+       serviceAccountName: {{ template "meteringServiceAccountName" . }}
+-{{- if or .Values.secrets.dockerConfig .Values.secrets.dockerConfigPath }}
+-      imagePullSecrets:
+-        - name: {{ .Values.global.imagePullSecret }}
+-{{- end }}
++      {{- include "k10.imagePullSecrets" . | indent 6 }}
+ {{- if $.stateful }}
+       initContainers:
+       - name: upgrade-init
+@@ -202,6 +199,10 @@
+           - name: K10_REPORT_PUSH_PERIOD
+             value: {{ .Values.metering.reportPushPeriod | quote }}
+ {{- end }}
++{{- if .Values.metering.promoID }}
++          - name: K10_PROMOTION_ID
++            value: {{ .Values.metering.promoID }}
++{{- end }}
+ {{- if .Values.reportingSecret }}
+           - name: AGENT_CONSUMER_ID
+             valueFrom:

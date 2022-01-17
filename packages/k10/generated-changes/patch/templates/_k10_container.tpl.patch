@@ -1,0 +1,38 @@
+--- charts-original/templates/_k10_container.tpl
++++ charts/templates/_k10_container.tpl
+@@ -159,6 +159,15 @@
+                 key: role
+ {{- end }}
+ {{- end }}
++{{- if eq (include "check.vaultcreds" .) "true" }}
++          - name: VAULT_ADDR
++            value: {{ .Values.vault.address }}
++          - name: VAULT_TOKEN
++            valueFrom:
++              secretKeyRef:
++                name: {{ .Values.vault.secretName }}
++                key: vault_token
++{{- end }}
+ {{- if eq (include "check.vspherecreds" .) "true" }}
+           - name: VSPHERE_ENDPOINT
+             valueFrom:
+@@ -426,15 +435,17 @@
+                 key: KanisterToolsCPULimits
+ {{- end }}
+ {{- end }}
+-{{- if and (.Values.prometheus.server.enabled) (has $service (list "dashboardbff" "config" "executor")) }}
++{{- if (list "dashboardbff" "config" "executor" | has $service) }}
++    {{- if .Values.prometheus.server.enabled }}
+           - name: K10_PROMETHEUS_HOST
+             value: {{ include "k10.prometheus.service.name" . }}-exp
+           - name: K10_PROMETHEUS_PORT
+             value: {{ .Values.prometheus.server.service.servicePort | quote }}
+           - name: K10_PROMETHEUS_BASE_URL
+             value: {{ .Values.prometheus.server.baseURL }}
++    {{- end }}
+           - name: K10_GRAFANA_ENABLED
+-            value: {{ .Values.prometheus.server.enabled | quote }}
++            value: {{ .Values.grafana.enabled | quote }}
+ {{- end }}
+ {{- if or $.stateful (or (eq (include "check.googlecreds" .) "true") (eq $service "auth" "logging")) }}
+         volumeMounts:

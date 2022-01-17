@@ -1,0 +1,33 @@
+--- charts-original/values.yaml
++++ charts/values.yaml
+@@ -89,7 +89,7 @@
+     bloblifecyclemanager: ''
+     vbrintegrationapi: ''
+     grafana: ''
+-  imagePullSecret: '' #k10-ecr
++  imagePullSecret: ''
+   ingress:
+     create: false
+     urlPath: "" #url path for k10 gateway
+@@ -260,6 +260,7 @@
+   mode: '' # controls metric and license reporting (set to `airgap` for private-network installs)
+   reportCollectionPeriod: 1800 # metric report collection period in seconds
+   reportPushPeriod: 3600 # metric report push period in seconds
++  promoID: '' # sets the K10 promotion ID
+ 
+ clusterName: ''
+ executorReplicas: 3
+@@ -438,8 +439,12 @@
+ encryption:
+   primaryKey: # primaryKey is used for enabling encryption of K10 primary key
+     awsCmkKeyId: '' # Ensures AWS CMK is used for encrypting K10 primary key
+-    vaultTransitKeyId: ''
++    vaultTransitKeyName: ''
+     vaultTransitPath: ''
+ 
+ vmWare:
+   taskTimeoutMin: ""
++
++vault:
++  secretName: ""
++  address: "http://vault:8200"

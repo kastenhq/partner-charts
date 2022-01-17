@@ -1,0 +1,26 @@
+--- charts-original/templates/v0services.yaml
++++ charts/templates/v0services.yaml
+@@ -4,6 +4,7 @@
+ {{- $aggregated_api_port := .Values.service.aggregatedApiPort -}}
+ {{- $postfix := default .Release.Name .Values.ingress.urlPath -}}
+ {{- $colocated_services := include "k10.colocatedServices" . | fromYaml -}}
++{{- $exposed_services := include "k10.exposedServices" . | splitList " " -}}
+ {{- $os_postfix := default .Release.Name .Values.route.path -}}
+ {{- $main_context := . -}}
+ {{- range append (include "k10.restServices" . | splitList " ") "frontend" }}
+@@ -17,6 +18,7 @@
+ {{ include "helm.labels" $ | indent 4 }}
+     component: {{ . }}
+     run: {{ . }}-svc
++{{ if or (has . $exposed_services) (eq . "frontend") }}
+   annotations:
+     getambassador.io/config: |
+       ---
+@@ -53,6 +55,7 @@
+       timeout_ms: 30000
+     {{- end }}
+ {{- end }}
++{{- end }}
+ spec:
+   ports:
+   - name: http

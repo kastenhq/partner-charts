@@ -1,0 +1,24 @@
+--- charts-original/charts/grafana/templates/_pod.tpl
++++ charts/charts/grafana/templates/_pod.tpl
+@@ -150,15 +150,16 @@
+ {{- if .Values.extraInitContainers }}
+ {{ toYaml .Values.extraInitContainers | indent 2 }}
+ {{- end }}
+-{{- if .Values.image.pullSecrets }}
++{{- if (or .Values.global.imagePullSecret .Values.image.pullSecrets) }}
+ imagePullSecrets:
++{{- if .Values.global.imagePullSecret }}
++  - name: {{ .Values.global.imagePullSecret }}
++{{- end }}
++{{- if .Values.image.pullSecrets }}
+ {{- range .Values.image.pullSecrets }}
+   - name: {{ . }}
+-{{- end}}
+ {{- end }}
+-{{- if .Values.global.imagePullSecret }}
+-imagePullSecrets:
+-  - name: {{ .Values.global.imagePullSecret }}
++{{- end }}
+ {{- end }}
+ enableServiceLinks: {{ .Values.enableServiceLinks }}
+ containers:

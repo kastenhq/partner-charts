@@ -1,0 +1,84 @@
+--- charts-original/templates/_helpers.tpl
++++ charts/templates/_helpers.tpl
+@@ -381,6 +381,15 @@
+ {{- end -}}
+ 
+ {{/*
++Check if Vault creds are specified
++*/}}
++{{- define "check.vaultcreds" -}}
++{{- if .Values.vault.secretName -}}
++{{- print true -}}
++{{- end -}}
++{{- end -}}
++
++{{/*
+ Checks and enforces only 1 set of cloud creds is specified
+ */}}
+ {{- define "enforce.singlecloudcreds" -}}
+@@ -547,37 +556,54 @@
+ Check if encryption keys are specified
+ */}}
+ {{- define "check.primaryKey" -}}
+-{{- if .Values.encryption.primaryKey.awsCmkKeyId -}}
++{{- if (or .Values.encryption.primaryKey.awsCmkKeyId .Values.encryption.primaryKey.vaultTransitKeyName) -}}
+ {{- print true -}}
+ {{- end -}}
+ {{- end -}}
+ 
+ {{- define "check.validateMonitoringProperties" -}}
+-{{- include "check.monitoringEnabled" . -}}
+ {{- include "check.monitoringPrefix" . -}}
+ {{- include "check.monitoringFullNameOverride" . -}}
+ {{- end -}}
+ 
+-{{- define "check.monitoringEnabled" -}}
+-{{- if not (eq .Values.prometheus.server.enabled .Values.grafana.enabled) -}}
+-{{ fail "Prometheus and Grafana should be enabled or disabled together. Please check values of prometheus.server.enabled and grafana.enabled" }}
+-{{- end -}}
+-{{- end -}}
+-
+ {{- define "check.monitoringPrefix" -}}
++{{- if eq .Values.prometheus.server.enabled .Values.grafana.enabled -}}
+ {{- if not (eq .Values.prometheus.server.prefixURL .Values.grafana.prometheusPrefixURL) -}}
+ {{ fail "Prometheus and Grafana prefixURL should match. Please check values of prometheus.server.prefixURL and grafana.prometheusPrefixURL" }}
+ {{- end -}}
+ {{- end -}}
++{{- end -}}
+ 
+ {{- define "check.monitoringFullNameOverride" -}}
++{{- if eq .Values.prometheus.server.enabled .Values.grafana.enabled -}}
+ {{- if not (eq .Values.prometheus.server.fullnameOverride .Values.grafana.prometheusName) -}}
+ {{ fail "The Prometheus name overrides must match. Please check values of prometheus.server.fullnameOverride and grafana.prometheusName" }}
+ {{- end -}}
+ {{- end -}}
++{{- end -}}
+ 
+ {{- define "check.validateImagePullSecrets" -}}
+-{{ if and (not .Values.global.imagePullSecret) (or .Values.secrets.dockerConfig .Values.secrets.dockerConfigPath )}}
+-{{ fail "Provide secret name if custom docker config is provided. Please check value of global.imagePullSecret" }}
+-{{- end -}}
++    {{/* Validate image pull secrets if a custom Docker config is provided */}}
++    {{- if (or .Values.secrets.dockerConfig .Values.secrets.dockerConfigPath ) -}}
++	{{- if (and .Values.grafana.enabled (not .Values.global.imagePullSecret) (not .Values.grafana.image.pullSecrets)) -}}
++	    {{ fail "A custom Docker config was provided, but Grafana is not configured to use it. Please check that global.imagePullSecret is set correctly." }}
++	{{- end -}}
++	{{- if (and .Values.prometheus.server.enabled (not .Values.global.imagePullSecret) (not .Values.prometheus.imagePullSecrets)) -}}
++	    {{ fail "A custom Docker config was provided, but Prometheus is not configured to use it. Please check that global.imagePullSecret is set correctly." }}
++	{{- end -}}
++    {{- end -}}
+ {{- end -}}
++
++{{- define "k10.imagePullSecrets" }}
++{{- $imagePullSecrets := list .Values.global.imagePullSecret }}
++{{- if (or .Values.secrets.dockerConfig .Values.secrets.dockerConfigPath) }}
++  {{- $imagePullSecrets = concat $imagePullSecrets (list "k10-ecr") | compact | uniq }}
++{{- end }}
++
++{{- if $imagePullSecrets }}
++imagePullSecrets:
++  {{- range $imagePullSecrets }}
++  - name: {{ . }}
++  {{- end }}
++{{- end }}
++{{- end }}

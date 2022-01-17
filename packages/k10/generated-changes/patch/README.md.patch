@@ -1,0 +1,19 @@
+--- charts-original/README.md
++++ charts/README.md
+@@ -73,7 +73,7 @@
+ `global.persistence.metering.size` | Size of a volume for metering service  | `global.persistence.size`
+ `global.persistence.storageClass` | Specified StorageClassName will be used for PVCs | `None`
+ `global.airgapped.repository` | Specify the helm repository for offline (airgapped) installation | `''`
+-`global.imagePullSecret` | Provide secret which contains docker config for private repository. | `''`
++`global.imagePullSecret` | Provide secret which contains docker config for private repository. Use `k10-ecr` when secrets.dockerConfigPath is used. | `''`
+ `secrets.awsAccessKeyId` | AWS access key ID (required for AWS deployment) | `None`
+ `secrets.awsSecretAccessKey` | AWS access key secret | `None`
+ `secrets.awsIamRole` | ARN of the AWS IAM role assumed by K10 to perform any AWS operation. | `None`
+@@ -96,6 +96,7 @@
+ `metering.mode` | Control license reporting (set to `airgap` for private-network installs) | `None`
+ `metering.reportCollectionPeriod` | Sets metric report collection period (in seconds) | `1800`
+ `metering.reportPushPeriod` | Sets metric report push period (in seconds) | `3600`
++`metering.promoID` | Sets K10 promotion ID from marketing campaigns | `None`
+ `metering.awsMarketplace` | Sets AWS cloud metering license mode | `false`
+ `metering.awsManagedLicense` | Sets AWS managed license mode | `false`
+ `metering.licenseConfigSecretName` | Sets AWS managed license config secret | `None`

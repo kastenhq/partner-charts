@@ -1,0 +1,14 @@
+--- charts-original/templates/gateway.yaml
++++ charts/templates/gateway.yaml
+@@ -95,10 +95,7 @@
+ {{ include "helm.labels" . | indent 8 }}
+     spec:
+       serviceAccountName: {{ template "serviceAccountName" . }}
+-{{- if or .Values.secrets.dockerConfig .Values.secrets.dockerConfigPath }}
+-      imagePullSecrets:
+-        - name: {{ .Values.global.imagePullSecret }}
+-{{- end }}
++      {{- include "k10.imagePullSecrets" . | indent 6 }}
+       containers:
+       - name: ambassador
+         image: {{ include "k10.ambImage" . }}

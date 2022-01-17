@@ -1,7 +1,9 @@
 --- charts-original/Chart.yaml
 +++ charts/Chart.yaml
-@@ -2,9 +2,14 @@
- appVersion: 4.5.6
+@@ -1,10 +1,15 @@
+ apiVersion: v2
+-appVersion: 4.5.5
++appVersion: 4.5.6
  description: Kasten’s K10 Data Management Platform
  home: https://kasten.io/
 -icon: https://docs.kasten.io/_static/kasten.png
@@ -10,7 +12,8 @@
  - email: support@kasten.io
    name: kastenIO
  name: k10
- version: 4.5.6
+-version: 4.5.5
++version: 4.5.6
 +kubeVersion: ">= 1.17"
 +annotations:
 +  catalog.cattle.io/certified: partner

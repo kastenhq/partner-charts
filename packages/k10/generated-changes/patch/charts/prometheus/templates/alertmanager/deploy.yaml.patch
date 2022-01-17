@@ -1,0 +1,12 @@
+--- charts-original/charts/prometheus/templates/alertmanager/deploy.yaml
++++ charts/charts/prometheus/templates/alertmanager/deploy.yaml
+@@ -142,6 +142,9 @@
+         - name: {{ .name }}
+           secret:
+             secretName: {{ .secretName }}
++            {{- with .optional }}
++            optional: {{ . }}
++            {{- end }}
+       {{- end }}
+         - name: storage-volume
+         {{- if .Values.alertmanager.persistentVolume.enabled }}

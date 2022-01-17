@@ -1,0 +1,19 @@
+--- charts-original/templates/_definitions.tpl
++++ charts/templates/_definitions.tpl
+@@ -2,6 +2,7 @@
+ {{- define "k10.additionalServices" -}}frontend kanister {{- end -}}
+ {{- define "k10.restServices" -}}auth bloblifecyclemanager catalog crypto dashboardbff executor jobs logging metering state vbrintegrationapi {{- end -}}
+ {{- define "k10.services" -}}aggregatedapis config {{- end -}}
++{{- define "k10.exposedServices" -}}auth dashboardbff metering state vbrintegrationapi {{- end -}}
+ {{- define "k10.statelessServices" -}}aggregatedapis auth bloblifecyclemanager crypto dashboardbff executor state vbrintegrationapi {{- end -}}
+ {{- define "k10.colocatedServices" -}}bloblifecyclemanager:
+   isExposed: true
+@@ -157,6 +158,6 @@
+ {{- end -}}
+ {{- define "k10.multiClusterVersion" -}}2{{- end -}}
+ {{- define "k10.ambassadorImageTag" -}}1.14.1{{- end -}}
+-{{- define "k10.kanisterToolsImageTag" -}}0.70.0{{- end -}}
++{{- define "k10.kanisterToolsImageTag" -}}0.71.0{{- end -}}
+ {{- define "k10.dexImageTag" -}}v2.24.0{{- end -}}
+-{{- define "k10.rhAmbassadorImageTag" -}}1.9.1{{- end -}}
++{{- define "k10.rhAmbassadorImageTag" -}}1.13.8{{- end -}}

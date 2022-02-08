@@ -7,22 +7,22 @@ questions:
 
 - variable: secrets.awsAccessKeyId
   description: "AWS access key ID (required for AWS deployment)"
-  type: string
-  label: AWS access key ID (required for AWS deployment)
+  type: password
+  label: AWS Access Key ID
   required: false
   group: "AWS Configuration"
 
 - variable: secrets.awsSecretAccessKey
   description: "AWS access key secret (required for AWS deployment)"
-  type: string
-  label: AWS access key secret (required for AWS deployment)
+  type: password
+  label: AWS Secret Access Key
   required: false
   group: "AWS Configuration"
 
 - variable: secrets.awsIamRole
   description: "ARN of the AWS IAM role assumed by K10 to perform any AWS operation."
   type: string
-  label: ARN of the AWS IAM role assumed by K10 to perform any AWS operation.
+  label: ARN of the AWS IAM role
   required: false
   group: "AWS Configuration"
 
@@ -40,7 +40,7 @@ questions:
   label: EFS Backup Valut Name
   required: false
   default: "k10vault"
-  group: "AWS Congfiguration"
+  group: "AWS Configuration"
 
 ### Google Cloud Configuration
 
@@ -62,14 +62,14 @@ questions:
 
 - variable: secrets.azureClientId
   description: "Azure Service App ID"
-  type: string
+  type: password
   label: Service App ID
   required: false
   group: "Azure Configuration"
 
 - variable: secrets.azureClientSecret
   description: "Azure Service App secret"
-  type: string
+  type: password
   label: Service App secret
   required: false
   group: "Azure Configuration"
@@ -169,11 +169,11 @@ questions:
     label: The type of prompt to be used during authentication (none, consent, login or select_account)
   - variable: auth.oidcAuth.clientID
     description: "Client ID given by the OIDC provider for K10"
-    type: string
+    type: password
     label: OIDC Client ID 
   - variable: auth.oidcAuth.clientSecret
     description: "Client secret given by the OIDC provider for K10"
-    type: multiline
+    type: password
     label: OIDC Client Secret
   - variable: auth.oidcAuth.usernameClaim
     description: "The claim to be used as the username"
@@ -206,7 +206,8 @@ questions:
   subquestions:
   - variable: externalGateway.annotations
     description: "Standard annotations for the services"
-    type: string
+    type: multiline
+    default: ""
     label: Annotation
   - variable: externalGateway.fqdn.name
     description: "Domain name for the K10 API services"
@@ -275,7 +276,7 @@ questions:
 - variable: license
   description: "License string obtained from Kasten"
   type: multiline
-  label: License string obtained from Kasten
+  label: License String
   group: "License"
 - variable: eula.accept
   description: "Whether to enable accept EULA before installation"

@@ -11,7 +11,7 @@
  name: k10
  version: 4.5.8
 +icon: https://docs.kasten.io/_static/kasten-logo-vertical.png
-+kubeVersion: '>= 1.17.0-0'
++kubeVersion: ">= 1.17.0-0"
 +annotations:
 +  catalog.cattle.io/certified: partner
 +  catalog.cattle.io/release-name: k10

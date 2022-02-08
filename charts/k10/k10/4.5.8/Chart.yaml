@@ -7,7 +7,7 @@ appVersion: 4.5.8
 description: Kasten’s K10 Data Management Platform
 home: https://kasten.io/
 icon: https://docs.kasten.io/_static/kasten-logo-vertical.png
-kubeVersion: '>= 1.17'
+kubeVersion: '>= 1.17.0-0'
 maintainers:
 - email: support@kasten.io
   name: kastenIO

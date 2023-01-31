@@ -10828,10 +10828,37 @@ entries:
       catalog.cattle.io/certified: partner
       catalog.cattle.io/display-name: K10
       catalog.cattle.io/featured: "1"
+      catalog.cattle.io/kube-version: '>= 1.17.0-0'
+      catalog.cattle.io/release-name: k10
+    apiVersion: v2
+    appVersion: 5.5.4
+    created: "2023-01-31T20:18:11.650427327+05:30"
+    dependencies:
+    - name: grafana
+      repository: file://./charts/grafana
+      version: 6.32.9
+    - name: prometheus
+      repository: file://./charts/prometheus
+      version: 15.8.5
+    description: Kasten’s K10 Data Management Platform
+    digest: e7c13cf179586d4e2dce9ee3653d8b776d61b6191b8cba3a0ae681ec04d60949
+    home: https://kasten.io/
+    icon: https://docs.kasten.io/_static/logo-kasten-k10-blue-white.png
+    maintainers:
+    - email: contact@kasten.io
+      name: kastenIO
+    name: k10
+    urls:
+    - assets/kasten/k10-5.5.401.tgz
+    version: 5.5.401
+  - annotations:
+      catalog.cattle.io/certified: partner
+      catalog.cattle.io/display-name: K10
+      catalog.cattle.io/featured: "1"
       catalog.cattle.io/release-name: k10
     apiVersion: v2
     appVersion: 5.5.1
-    created: "2022-11-28T22:18:51.187449-05:00"
+    created: "2023-01-31T20:18:07.862772771+05:30"
     description: Kasten’s K10 Data Management Platform
     digest: 894fcbfbf4e895e353b240591124e7a6ba03391cc1d2834e0c2c275f6760ec63
     home: https://kasten.io/
@@ -10842,7 +10869,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.5.100.tgz
+    - assets/kasten/k10-5.5.100.tgz
     version: 5.5.100
   - annotations:
       catalog.cattle.io/certified: partner
@@ -10861,7 +10888,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.5.0.tgz
+    - assets/kasten/k10-5.5.0.tgz
     version: 5.5.0
   - annotations:
       catalog.cattle.io/certified: partner
@@ -10880,7 +10907,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.1100.tgz
+    - assets/kasten/k10-5.0.1100.tgz
     version: 5.0.1100
   - annotations:
       catalog.cattle.io/certified: partner
@@ -10899,7 +10926,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.1000.tgz
+    - assets/kasten/k10-5.0.1000.tgz
     version: 5.0.1000
   - annotations:
       catalog.cattle.io/certified: partner
@@ -10918,7 +10945,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.900.tgz
+    - assets/kasten/k10-5.0.900.tgz
     version: 5.0.900
   - annotations:
       catalog.cattle.io/certified: partner
@@ -10937,7 +10964,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.800.tgz
+    - assets/kasten/k10-5.0.800.tgz
     version: 5.0.800
   - annotations:
       catalog.cattle.io/certified: partner
@@ -10956,7 +10983,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.700.tgz
+    - assets/kasten/k10-5.0.700.tgz
     version: 5.0.700
   - annotations:
       catalog.cattle.io/certified: partner
@@ -10975,7 +11002,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.600.tgz
+    - assets/kasten/k10-5.0.600.tgz
     version: 5.0.600
   - annotations:
       catalog.cattle.io/certified: partner
@@ -10994,7 +11021,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.500.tgz
+    - assets/kasten/k10-5.0.500.tgz
     version: 5.0.500
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11013,7 +11040,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.400.tgz
+    - assets/kasten/k10-5.0.400.tgz
     version: 5.0.400
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11032,7 +11059,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.300.tgz
+    - assets/kasten/k10-5.0.300.tgz
     version: 5.0.300
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11051,7 +11078,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.200.tgz
+    - assets/kasten/k10-5.0.200.tgz
     version: 5.0.200
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11070,7 +11097,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.100.tgz
+    - assets/kasten/k10-5.0.100.tgz
     version: 5.0.100
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11089,7 +11116,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-5.0.0.tgz
+    - assets/kasten/k10-5.0.0.tgz
     version: 5.0.0
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11108,7 +11135,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-4.5.1500.tgz
+    - assets/kasten/k10-4.5.1500.tgz
     version: 4.5.1500
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11127,7 +11154,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-4.5.1400.tgz
+    - assets/kasten/k10-4.5.1400.tgz
     version: 4.5.1400
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11146,7 +11173,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-4.5.1300.tgz
+    - assets/kasten/k10-4.5.1300.tgz
     version: 4.5.1300
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11165,7 +11192,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-4.5.1200.tgz
+    - assets/kasten/k10-4.5.1200.tgz
     version: 4.5.1200
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11184,7 +11211,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-4.5.1100.tgz
+    - assets/kasten/k10-4.5.1100.tgz
     version: 4.5.1100
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11203,7 +11230,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-4.5.1000.tgz
+    - assets/kasten/k10-4.5.1000.tgz
     version: 4.5.1000
   - annotations:
       catalog.cattle.io/certified: partner
@@ -11222,7 +11249,7 @@ entries:
       name: kastenIO
     name: k10
     urls:
-    - assets/k10/k10-4.5.900.tgz
+    - assets/kasten/k10-4.5.900.tgz
     version: 4.5.900
   kafka:
   - annotations:
